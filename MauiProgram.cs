@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FeedOptimisationApp.Database;
+using Microsoft.Extensions.Logging;
 
 namespace FeedOptimisationApp
 {
@@ -16,9 +17,11 @@ namespace FeedOptimisationApp
 
             builder.Services.AddMauiBlazorWebView();
 
+            builder.Services.AddSingleton<ApplicationDbContext>();
+
 #if DEBUG
-    		builder.Services.AddBlazorWebViewDeveloperTools();
-    		builder.Logging.AddDebug();
+            builder.Services.AddBlazorWebViewDeveloperTools();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
